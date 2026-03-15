@@ -1,5 +1,5 @@
 export default function App() {
-	return <>Hello World!</>;
+	return <div className="bg-amber-300">Hello World!</div>;
 }
 
 // export default App;
