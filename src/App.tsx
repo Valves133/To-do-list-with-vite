@@ -5,6 +5,7 @@ import SpinnerIcon from "./assets/icons/spinner.svg?react";
 import TrashIcon from "./assets/icons/trash.svg?react";
 import XIcon from "./assets/icons/x.svg?react";
 import Button from "./components/Button";
+import ButtonIcon from "./components/ButtonIcon";
 import Badge from "./components/badge";
 import Icon from "./components/icon";
 import Text from "./components/text";
@@ -38,6 +39,12 @@ export default function App() {
 				<Button icon={PlusIcon} variant="primary">
 					Nova Tarefa
 				</Button>
+			</div>
+
+			<div className="flex gap-1">
+				<ButtonIcon icon={TrashIcon} variant="primary" />
+				<ButtonIcon icon={TrashIcon} variant="secundary" />
+				<ButtonIcon icon={TrashIcon} variant="tertiary" />
 			</div>
 		</div>
 	);
