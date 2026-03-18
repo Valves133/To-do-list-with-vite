@@ -4,6 +4,7 @@ import PlusIcon from "./assets/icons/plus.svg?react";
 import SpinnerIcon from "./assets/icons/spinner.svg?react";
 import TrashIcon from "./assets/icons/trash.svg?react";
 import XIcon from "./assets/icons/x.svg?react";
+import Button from "./components/Button";
 import Badge from "./components/badge";
 import Icon from "./components/icon";
 import Text from "./components/text";
@@ -31,7 +32,12 @@ export default function App() {
 			<div>
 				<Badge variant="secundary">5</Badge>
 				<Badge variant="primary">2 de 5</Badge>
-				<Badge />
+			</div>
+
+			<div>
+				<Button icon={PlusIcon} variant="primary">
+					Nova Tarefa
+				</Button>
 			</div>
 		</div>
 	);
