@@ -4,14 +4,15 @@ import PlusIcon from "./assets/icons/plus.svg?react";
 import SpinnerIcon from "./assets/icons/spinner.svg?react";
 import TrashIcon from "./assets/icons/trash.svg?react";
 import XIcon from "./assets/icons/x.svg?react";
-import Button from "./components/Button";
-import ButtonIcon from "./components/ButtonIcon";
 import Badge from "./components/badge";
+import Button from "./components/button";
+import ButtonIcon from "./components/buttonIcon";
 import Card from "./components/card";
 import Container from "./components/container";
 import Icon from "./components/icon";
 import Input from "./components/input";
 import InputCheckbox from "./components/input-checkbox";
+import Skeleton from "./components/skeleton";
 import Text from "./components/text";
 
 export default function App() {
@@ -35,9 +36,10 @@ export default function App() {
 					<Icon svg={XIcon} className="fill-pink-base" />
 				</div>
 
-				<div>
+				<div className="flex gap-1">
 					<Badge variant="secundary">5</Badge>
 					<Badge variant="primary">2 de 5</Badge>
+					<Badge loading>Loading</Badge>
 				</div>
 
 				<div>
@@ -50,6 +52,7 @@ export default function App() {
 					<ButtonIcon icon={TrashIcon} variant="primary" />
 					<ButtonIcon icon={TrashIcon} variant="secundary" />
 					<ButtonIcon icon={TrashIcon} variant="tertiary" />
+					<ButtonIcon icon={TrashIcon} loading />
 				</div>
 				<div>
 					<Input />
@@ -57,10 +60,17 @@ export default function App() {
 
 				<div>
 					<InputCheckbox />
+					<InputCheckbox loading />
 				</div>
 
 				<div>
 					<Card size="md">Hello world</Card>
+				</div>
+
+				<div className="space-y-2">
+					<Skeleton className="h-6" />
+					<Skeleton className="h-6" />
+					<Skeleton className="w-96 h-6" />
 				</div>
 			</div>
 		</Container>
