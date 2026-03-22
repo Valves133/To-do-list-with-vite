@@ -23,7 +23,7 @@ interface InputTextProps
 	extends VariantProps<typeof inputTexteVariants>,
 		Omit<React.ComponentProps<"input">, "size" | "disabled"> {}
 
-export default function Input({
+export default function InputText({
 	size,
 	disabled,
 	className,
