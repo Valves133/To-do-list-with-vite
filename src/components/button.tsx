@@ -15,7 +15,7 @@ export const buttonVariants = cva(
 				md: "h-14 py-4 px-5",
 			},
 			disabled: {
-				true: "opacity-0 pointer-events-none",
+				true: "opacity-50 pointer-events-none",
 			},
 		},
 		defaultVariants: {

@@ -6,12 +6,12 @@ import TrashIcon from "../assets/icons/trash.svg?react";
 import XIcon from "../assets/icons/x.svg?react";
 import Badge from "../components/badge";
 import Button from "../components/button";
-import ButtonIcon from "../components/buttonIcon";
+import ButtonIcon from "../components/button-icon";
 import Card from "../components/card";
 import Container from "../components/container";
 import Icon from "../components/icon";
-import Input from "../components/input";
 import InputCheckbox from "../components/input-checkbox";
+import Input from "../components/input-text";
 import Skeleton from "../components/skeleton";
 import Text from "../components/text";
 
