@@ -9,6 +9,7 @@ import Card from "../components/card";
 import InputCheckbox from "../components/input-checkbox";
 import InputText from "../components/input-text";
 import Text from "../components/text";
+import useTask from "../hooks/use-task";
 import { type Task, TaskState } from "../models/task";
 
 interface TaskItemProps {
@@ -18,13 +19,17 @@ export default function TaskItem({ task }: TaskItemProps) {
 	const [isEditing, setIsEditing] = React.useState(
 		task?.state === TaskState.Creating,
 	);
-	const [taskTitle, setTaskTitle] = React.useState("");
+	const [taskTitle, setTaskTitle] = React.useState(task.title || "");
+	const { updateTask, updateTaskStatus, deleteTask } = useTask();
 
 	function handleEditTask() {
 		setIsEditing(true);
 	}
 
 	function handleExitEditTask() {
+		if (task.state === TaskState.Creating) {
+			deleteTask(task.id);
+		}
 		setIsEditing(false);
 	}
 	function handleChangeTaskTitle(e: React.ChangeEvent<HTMLInputElement>) {
@@ -33,8 +38,17 @@ export default function TaskItem({ task }: TaskItemProps) {
 
 	function handleSaveTask(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		console.log(task.id, taskTitle);
+		updateTask(task.id, { title: taskTitle });
 		setIsEditing(false);
+	}
+
+	function handleChangeTaskStatus(e: React.ChangeEvent<HTMLInputElement>) {
+		const checked = e.target.checked;
+		updateTaskStatus(task.id, checked);
+	}
+
+	function handleDeleteTask() {
+		deleteTask(task.id);
 	}
 
 	return (
@@ -42,8 +56,8 @@ export default function TaskItem({ task }: TaskItemProps) {
 			{!isEditing ? (
 				<div className="flex items-center gap-4">
 					<InputCheckbox
-						value={task?.concluded?.toString()}
 						checked={task?.concluded}
+						onChange={handleChangeTaskStatus}
 					/>
 					<Text
 						className={cx("flex-1", {
@@ -53,7 +67,11 @@ export default function TaskItem({ task }: TaskItemProps) {
 						{task?.title}
 					</Text>
 					<div className="flex gap-1">
-						<ButtonIcon icon={TrashIcon} variant="tertiary" />
+						<ButtonIcon
+							icon={TrashIcon}
+							variant="tertiary"
+							onClick={handleDeleteTask}
+						/>
 						<ButtonIcon
 							icon={PencilIcon}
 							variant="tertiary"
@@ -64,6 +82,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 			) : (
 				<form onSubmit={handleSaveTask} className="flex items-center gap-4">
 					<InputText
+						value={taskTitle}
 						className="flex-1"
 						onChange={handleChangeTaskTitle}
 						required
